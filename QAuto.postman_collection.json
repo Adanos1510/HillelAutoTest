@@ -1,0 +1,626 @@
+{
+	"info": {
+		"_postman_id": "a4faa9fd-363b-46f2-aca3-5eb82555d31f",
+		"name": "QAuto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18589314"
+	},
+	"item": [
+		{
+			"name": "Sign In",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const schema = {\r",
+							"  \"properties\": {\r",
+							"    \"email\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The email Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"Pupsiki2group@gmail.com\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"password\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The password Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"Grupadva123\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"remember\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The remember Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"true\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"examples\": [{\r",
+							"        \"email\": \"Pupsiki2group@gmail.com\",\r",
+							"        \"password\": \"Grupadva123\",\r",
+							"        \"remember\": \"true\"\r",
+							"    }]\r",
+							"  }\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Server\");\r",
+							"   pm.response.to.have.header(\"Date\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.have.header(\"Content-Length\");\r",
+							"   pm.response.to.have.header(\"Connection\");\r",
+							"   pm.response.to.have.header(\"X-Powered-By\");\r",
+							"   pm.response.to.have.header(\"Vary\");\r",
+							"   pm.response.to.have.header(\"Access-Control-Allow-Credentials\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Limit\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Remaining\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Reset\");\r",
+							"   pm.response.to.have.header(\"Set-Cookie\");\r",
+							"   pm.response.to.have.header(\"ETag\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Server is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Server\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Date is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Date\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Length is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Length\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Connection is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Connection\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"X-Powered-By is correct\", function () {\r",
+							"   pm.response.to.have.header(\"X-Powered-By\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Vary is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Vary\");\r",
+							"});\r",
+							"\r",
+							"let responseHeaders1 = pm.response.headers.all();\r",
+							"pm.collectionVariables.set('headers', responseHeaders1);\r",
+							"\r",
+							"pm.test(\"testheaders\", function () {\r",
+							"    pm.expect(responseHeaders1).to.eql(pm.collectionVariables.get('headers'))\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{mail}}\",\r\n    \"password\": \"{{pass}}\",\r\n    \"remember\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/auth/signin",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const schema = {\r",
+							"  \"properties\": {\r",
+							"    \"email\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The email Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"Pupsiki2group@gmail.com\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"password\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The password Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"Grupadva123\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"remember\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The remember Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"true\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"examples\": [{\r",
+							"        \"email\": \"Pupsiki2group@gmail.com\",\r",
+							"        \"password\": \"Grupadva123\",\r",
+							"        \"remember\": \"true\"\r",
+							"    }]\r",
+							"  }\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Server\");\r",
+							"   pm.response.to.have.header(\"Date\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.have.header(\"Content-Length\");\r",
+							"   pm.response.to.have.header(\"Connection\");\r",
+							"   pm.response.to.have.header(\"X-Powered-By\");\r",
+							"   pm.response.to.have.header(\"Vary\");\r",
+							"   pm.response.to.have.header(\"Access-Control-Allow-Credentials\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Limit\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Remaining\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Reset\");\r",
+							"   pm.response.to.have.header(\"Set-Cookie\");\r",
+							"   pm.response.to.have.header(\"ETag\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Server is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Server\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Date is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Date\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Length is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Length\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Connection is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Connection\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"X-Powered-By is correct\", function () {\r",
+							"   pm.response.to.have.header(\"X-Powered-By\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Vary is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Vary\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers is correct\", function () {\r",
+							"let responseHeaders = pm.response.headers.all();\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var carId = jsonData.data.id;\r",
+							"pm.collectionVariables.set('cardId', carId);\r",
+							"//console.log(carId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"carBrandId\": 3,\r\n    \"carModelId\": 12,\r\n    \"mileage\": 12312\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/cars",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add car Pre-request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const schema = {\r",
+							"  \"properties\": {\r",
+							"    \"email\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The email Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"Pupsiki2group@gmail.com\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"password\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The password Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"Grupadva123\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"remember\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"default\": \"\",\r",
+							"            \"title\": \"The remember Schema\",\r",
+							"            \"examples\": [\r",
+							"                \"true\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"examples\": [{\r",
+							"        \"email\": \"Pupsiki2group@gmail.com\",\r",
+							"        \"password\": \"Grupadva123\",\r",
+							"        \"remember\": \"true\"\r",
+							"    }]\r",
+							"  }\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Server\");\r",
+							"   pm.response.to.have.header(\"Date\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.have.header(\"Content-Length\");\r",
+							"   pm.response.to.have.header(\"Connection\");\r",
+							"   pm.response.to.have.header(\"X-Powered-By\");\r",
+							"   pm.response.to.have.header(\"Vary\");\r",
+							"   pm.response.to.have.header(\"Access-Control-Allow-Credentials\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Limit\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Remaining\");\r",
+							"   pm.response.to.have.header(\"X-RateLimit-Reset\");\r",
+							"   pm.response.to.have.header(\"Set-Cookie\");\r",
+							"   pm.response.to.have.header(\"ETag\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Server is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Server\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Date is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Date\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Length is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Length\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Connection is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Connection\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"X-Powered-By is correct\", function () {\r",
+							"   pm.response.to.have.header(\"X-Powered-By\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Vary is correct\", function () {\r",
+							"   pm.response.to.have.header(\"Vary\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers is correct\", function () {\r",
+							"let responseHeaders = pm.response.headers.all();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var mileage = Math.floor(Math.random() * 100)\r",
+							"console.log(mileage)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"carBrandId\": 4,\r\n    \"carModelId\": 16,\r\n    \"mileage\": {{$randomInt}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/cars",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qauto2.forstudy.space/api/cars",
+					"protocol": "https",
+					"host": [
+						"qauto2",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Cars",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test Audi\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[0].logoFilename).to.eql(\"audi.png\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test bmw\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[1].logoFilename).to.eql(\"bmw.png\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test ford\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[2].logoFilename).to.eql(\"ford.png\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test all cars\", function () {\r",
+							"    let responseHeaders1 = pm.response.headers.all();\r",
+							"    pm.expect(responseHeaders1).to.eql(pm.collectionVariables.get('headers'));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qauto2.forstudy.space/api/cars/brands",
+					"protocol": "https",
+					"host": [
+						"qauto2",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"cars",
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update mileage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var previuosMileage = pm.globals.get(\"Mileage\");\r",
+							"\r",
+							"var newMileage = parseInt(previuosMileage) + 1555;\r",
+							"\r",
+							"pm.globals.set(\"newMileage\", newMileage)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mileage\": {{newMileage}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/cars/{{cardId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"cars",
+						"{{cardId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/cars/{{cardId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"cars",
+						"{{cardId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "cardId",
+			"value": ""
+		},
+		{
+			"key": "newMileage",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Mileage",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "headers",
+			"value": ""
+		}
+	]
+}
